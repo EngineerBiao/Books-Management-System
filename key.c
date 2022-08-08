@@ -4,7 +4,8 @@
 #include "struct.h"  // 存有全局变量head 
 void key()
 {
-	int key, x;
+	int key, x;  
+	double y;  // x和y为临时存储变量 
 	scanf("%d", &key);
 	switch (key)
 	{
@@ -25,7 +26,13 @@ void key()
 				{
 					printf("请输入书名和价钱(空格分开):");
 					scanf("%s%lf", book->name, &book->price);
-					InsertBook(head, book);
+					if( !InsertBook(head, book) )
+					{
+						free(book);
+						printf("书号重复(已有书籍)\n");
+					}
+					else
+						printf("添加成功\n");
 					printf("继续输入书号(-1退出):");
 				}
 			}
@@ -34,19 +41,30 @@ void key()
 			printf("请输入要删除的书号：");
 			scanf("%d", &x);
 			if (DeleteBook(head, x))  // 根据书号删除
-				printf("delete finish\n");
+				printf("删除成功\n");
 			else
-				printf("delete error\n");
+				printf("书号不存在\n");
 			break;
-		case 3:  // 浏览书籍 
+		case 3:  // 浏览书籍
 			display(head);
 			break;
-		case 4:
-			printf("【查找】\n");
+		case 4:  // 修改价钱 
+			
+			printf("请输入要修改价钱的书号:");
+			scanf("%d", &x);
+			printf("请输入要修改为多少钱:");
+			scanf("%lf", &y);
+			if (ChangePrice(head, x, y))
+				printf("修改成功\n");
+			else
+				printf("没有找到书号\n");
 			break;
 		case 5:
 			printf("退出成功\n");
 			exit(EXIT_SUCCESS);
+			break;
+		default:
+			printf("请输入正确的数字\n");
 			break;
 	} 
 }

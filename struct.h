@@ -9,6 +9,7 @@ typedef struct book {
 } Node, *LinkList;
 extern LinkList head;  // 声明变量以便全局使用 
 void display(LinkList L);
-void InsertBook(LinkList L, LinkList book);
+bool InsertBook(LinkList L, LinkList book);
 bool DeleteBook(LinkList L, int x);
+bool ChangePrice(LinkList L, int x, double y);
 #endif

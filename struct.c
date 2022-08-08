@@ -23,18 +23,21 @@ void display(LinkList L)
 	else
 		printf("目前暂无书籍\n");
 }
-void InsertBook(LinkList L, LinkList book)  // 按书号顺序插入 
+bool InsertBook(LinkList L, LinkList book)  // 按书号顺序插入 
 {
 	LinkList node = L;
 	if (node->next != NULL)  // 根据书号找到对应位置 
 	{
-		while (node->next != NULL && node->next->number < book->number)
+		while (node->next != NULL && node->next->number <= book->number)
 		{
+			if (node->next->number == book->number)  // 判断书号是否重复 
+				return false;
 			node = node->next;
 		}
 	}
 	book->next = node->next;
 	node->next = book;
+	return true;
 }
 bool DeleteBook(LinkList L, int x)
 {
@@ -53,6 +56,18 @@ bool DeleteBook(LinkList L, int x)
 	else
 		return false;
 }
-
+bool ChangePrice(LinkList L, int x, double y)
+{
+	while (L->next != NULL && L->next->number != x)
+		L = L->next;
+	if (L->next == NULL)  // 没有找到书号 
+		return false;
+	else
+	{
+		L->next->price = y;
+		return true;
+	}	
+		
+}
 
 
