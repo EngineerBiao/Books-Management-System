@@ -1,3 +1,3 @@
 此图书管理系统有两个版本
-easy_version是一个简易版本，对应着本地的master分支，而file_version是一个
-文件版本，对应着本地的file分支
+easy_version是一个简易版本，对应着本地的easy_version分支，而file_version是一个
+文件版本，对应着本地的file_version分支
