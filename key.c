@@ -6,14 +6,29 @@ void key()
 {
 	int key, x;
 	scanf("%d", &key);
-	LinkList book = (LinkList)malloc(sizeof(Node));  // 创建一个临时书籍结点
-	book->next = NULL;
 	switch (key)
 	{
 		case 1:  // 添加书籍 
-			printf("请输入书籍信息(书号、书名、价钱):");
-			scanf("%d%s%lf", &book->number, book->name, &book->price);
-			InsertBook(head, book);
+			printf("请输入书号:");
+			while (1)
+			{
+				LinkList book = (LinkList)malloc(sizeof(Node));  // 创建一个临时书籍结点(一定要在while循环里创建，因为连 
+				book->next = NULL;								 // 续输入书籍每次都需要分配新的内存空间)
+				scanf("%d", &book->number);
+				if (book->number == -1)
+				{
+					free(book);
+					printf("添加结束\n");
+					break;
+				}
+				else
+				{
+					printf("请输入书名和价钱(空格分开):");
+					scanf("%s%lf", book->name, &book->price);
+					InsertBook(head, book);
+					printf("继续输入书号(-1退出):");
+				}
+			}
 			break;
 		case 2:  // 删除书籍 
 			printf("请输入要删除的书号：");
