@@ -3,20 +3,20 @@
 #include <stdbool.h>
 typedef struct book {
 	int number;  // 书号 
-	char name[20]; // 书名 
-	double price;// 书的价钱
+	char name[20];  // 书名 
+	double price;  // 书的价钱
 	struct book * next;
-} Node, *LinkList;
+} Node, *LinkList;  // Linklist等价于struct node * 
 LinkList head;
 void display(LinkList L)
 {
 	L = L->next;
 	if (L)
 	{
-		printf("书号\t书名\t价钱\n");
+		printf("书号%*s书名%*s价钱\n", 4, "", 14, "");
 		while (L != NULL)
 		{
-			printf("%d\t%s\t%.1f\n", L->number, L->name, L->price);
+			printf("%-8d%-18s%.1f\n", L->number, L->name, L->price);
 			L = L->next;
 		}
 	}

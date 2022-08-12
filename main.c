@@ -9,8 +9,12 @@ int main()
 	head->next = NULL;  // 初始化头结点head
 	while (1)
 	{
+		int a;
 		menu();
 		key();
+		printf("\n\n");
+		system("pause");  // 等待用户信号 
+		system("cls");
 	}
 	return  0;
 } 

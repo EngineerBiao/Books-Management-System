@@ -26,6 +26,11 @@ void key()
 				{
 					printf("请输入书名和价钱(空格分开):");
 					scanf("%s%lf", book->name, &book->price);
+					while (book->price < 0)
+					{
+						printf("请输入正确的价钱：");
+						scanf("%lf", &book->price);
+					}
 					if( !InsertBook(head, book) )
 					{
 						free(book);
@@ -65,6 +70,7 @@ void key()
 			break;
 		default:
 			printf("请输入正确的数字\n");
+			while ((x = getchar()) != '\n');  // 清空缓冲区,否则接下来会一直读到缓冲区的数据 
 			break;
 	} 
 }
