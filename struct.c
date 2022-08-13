@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-typedef struct book {
-	int number;  // 书号 
-	char name[20];  // 书名 
-	double price;  // 书的价钱
-	struct book * next;
-} Node, *LinkList;  // Linklist等价于struct node * 
-LinkList head;
+#include "struct.h"
 void display(LinkList L)
 {
 	L = L->next;

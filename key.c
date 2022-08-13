@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "struct.h"  // 存有全局变量head 
+#include "key.h"
 void key()
 {
 	int key, x;  

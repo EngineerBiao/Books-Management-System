@@ -7,7 +7,7 @@ typedef struct book {
 	double price;  // 书的价钱
 	struct book * next;
 } Node, *LinkList;  // Linklist等价于struct node *
-extern LinkList head;  // 声明变量以便全局使用 
+LinkList head;  // 声明变量以便全局使用 
 void display(LinkList L);
 bool InsertBook(LinkList L, LinkList book);
 bool DeleteBook(LinkList L, int x);
