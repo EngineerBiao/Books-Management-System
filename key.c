@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "struct.h"  // 存有全局变量head 
+#include "file.h"
+#include "key.h" 
 void key()
 {
 	int key, x;  
@@ -11,7 +13,7 @@ void key()
 	{
 		case 1:  // 添加书籍 
 			printf("请输入书号:");
-			while (1)
+			while (1)  // 连续添加书籍的循环 
 			{
 				LinkList book = (LinkList)malloc(sizeof(Node));  // 创建一个临时书籍结点(一定要在while循环里创建，因为连 
 				book->next = NULL;								 // 续输入书籍每次都需要分配新的内存空间)
@@ -39,6 +41,7 @@ void key()
 					else
 						printf("添加成功\n");
 					printf("继续输入书号(-1退出):");
+					SaveFile("books.txt", head);
 				}
 			}
 			break;
@@ -46,7 +49,10 @@ void key()
 			printf("请输入要删除的书号：");
 			scanf("%d", &x);
 			if (DeleteBook(head, x))  // 根据书号删除
+			{
 				printf("删除成功\n");
+				SaveFile("books.txt", head);
+			}
 			else
 				printf("书号不存在\n");
 			break;
@@ -54,13 +60,15 @@ void key()
 			display(head);
 			break;
 		case 4:  // 修改价钱 
-			
 			printf("请输入要修改价钱的书号:");
 			scanf("%d", &x);
 			printf("请输入要修改为多少钱:");
 			scanf("%lf", &y);
 			if (ChangePrice(head, x, y))
+			{
 				printf("修改成功\n");
+				SaveFile("books.txt", head);
+			}
 			else
 				printf("没有找到书号\n");
 			break;

@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-typedef struct book {
-	int number;  // 书号 
-	char name[20];  // 书名 
-	double price;  // 书的价钱
-	struct book * next;
-} Node, *LinkList;  // Linklist等价于struct node * 
-LinkList head;
+#include "file.h"
+#include "struct.h"  // 包含了自己的头文件,就不用再定义结构了 
+//typedef struct book {
+//	int number;  // 书号 
+//	char name[20];  // 书名 
+//	double price;  // 书的价钱
+//	struct book * next;
+//} Node, *LinkList;  // Linklist等价于struct node * 
 void display(LinkList L)
 {
 	L = L->next;
