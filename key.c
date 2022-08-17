@@ -4,6 +4,7 @@
 #include "struct.h"  // 存有全局变量head 
 #include "file.h"
 #include "key.h" 
+extern 
 void key()
 {
 	int key, x;  
